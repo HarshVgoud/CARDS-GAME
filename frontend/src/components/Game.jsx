@@ -31,7 +31,11 @@ const Game = ({ user }) => {
 
   // Sync WebSocket connection
   useEffect(() => {
-    socket = io(API_URL);
+    const socketOptions = {};
+    if (API_URL.includes('/_/backend')) {
+      socketOptions.path = '/_/backend/socket.io';
+    }
+    socket = io(API_URL.includes('/_/backend') ? window.location.origin : API_URL, socketOptions);
 
     if (user) {
       socket.emit('join_room', { roomId, userId: user.id, username: user.username });

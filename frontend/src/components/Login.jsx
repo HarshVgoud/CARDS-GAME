@@ -29,7 +29,7 @@ const Login = ({ setUser, setToken }) => {
       setToken(res.data.token);
       setUser(res.data.user);
     } catch (err) {
-      setError('Invalid username or password');
+      setError(err.response?.data?.error || (err.message === 'Network Error' ? 'Could not connect to server. Please make sure the backend is running.' : err.message || 'Login failed'));
     }
   };
 

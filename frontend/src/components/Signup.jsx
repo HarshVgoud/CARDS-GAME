@@ -33,7 +33,7 @@ const Signup = () => {
       setMessage('Account created! Redirecting to login...');
       setTimeout(() => navigate('/login'), 2000);
     } catch (err) {
-      setMessage(err.response?.data?.error || 'Username already taken');
+      setMessage(err.response?.data?.error || (err.message === 'Network Error' ? 'Could not connect to server. Please make sure the backend is running.' : err.message || 'Signup failed'));
     }
   };
 
