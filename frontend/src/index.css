@@ -1,0 +1,112 @@
+:root {
+  --bg-dark: #0b0914;
+  --bg-card: rgba(20, 18, 33, 0.7);
+  --bg-card-hover: rgba(30, 28, 48, 0.85);
+  --border-glow: rgba(253, 203, 110, 0.15);
+  --gold: #f39c12;
+  --gold-light: #f1c40f;
+  --gold-glow: rgba(241, 196, 15, 0.4);
+  --crimson: #e74c3c;
+  --crimson-glow: rgba(231, 76, 60, 0.4);
+  --emerald: #2ecc71;
+  --emerald-glow: rgba(46, 204, 113, 0.4);
+  --royal-blue: #3498db;
+  --royal-blue-glow: rgba(52, 152, 219, 0.4);
+  --text-light: #f5f6fa;
+  --text-muted: #a0a5c0;
+  
+  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+}
+
+/* Page background with animated gradient */
+.page-bg {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-dark), #1a0f2e);
+  animation: bgGradient 15s ease infinite;
+}
+
+@keyframes bgGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Specific backgrounds for login and signup */
+.login-bg {
+  background: radial-gradient(circle at 20% 30%, rgba(90,20,150,0.2), transparent),
+              radial-gradient(circle at 80% 70%, rgba(231,76,60,0.1), transparent);
+}
+
+.signup-bg {
+  background: radial-gradient(circle at 10% 20%, rgba(46,204,113,0.15), transparent),
+              radial-gradient(circle at 90% 80%, rgba(241,196,15,0.1), transparent);
+}
+
+/* Lobby specific background */
+.lobby-bg {
+  background: radial-gradient(circle at 20% 30%, rgba(155,89,182,0.15), transparent),
+              radial-gradient(circle at 80% 70%, rgba(231,76,60,0.08), transparent);
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(90, 20, 150, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(231, 76, 60, 0.08) 0%, transparent 40%);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--gold-light);
+  text-decoration: none;
+  font-weight: 600;
+  transition: text-shadow 0.3s, color 0.3s;
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px var(--gold-glow);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
+}
