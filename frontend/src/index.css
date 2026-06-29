@@ -1,19 +1,21 @@
 :root {
-  --bg-dark: #0b0914;
-  --bg-card: rgba(20, 18, 33, 0.7);
-  --bg-card-hover: rgba(30, 28, 48, 0.85);
-  --border-glow: rgba(253, 203, 110, 0.15);
-  --gold: #f39c12;
-  --gold-light: #f1c40f;
-  --gold-glow: rgba(241, 196, 15, 0.4);
-  --crimson: #e74c3c;
-  --crimson-glow: rgba(231, 76, 60, 0.4);
-  --emerald: #2ecc71;
-  --emerald-glow: rgba(46, 204, 113, 0.4);
-  --royal-blue: #3498db;
-  --royal-blue-glow: rgba(52, 152, 219, 0.4);
+  --bg-dark: #07050a;
+  --bg-card: rgba(15, 12, 28, 0.7);
+  --bg-card-hover: rgba(23, 19, 43, 0.85);
+  --border-glow: rgba(255, 215, 0, 0.18);
+  --gold: #d4af37;
+  --gold-light: #ffd700;
+  --gold-glow: rgba(255, 215, 0, 0.35);
+  --crimson: #d63031;
+  --crimson-glow: rgba(214, 48, 49, 0.4);
+  --emerald: #00b894;
+  --emerald-glow: rgba(0, 184, 148, 0.4);
+  --royal-blue: #0984e3;
+  --royal-blue-glow: rgba(9, 132, 227, 0.4);
   --text-light: #f5f6fa;
-  --text-muted: #a0a5c0;
+  --text-muted: #a4b0be;
+  --neon-purple: #a29bfe;
+  --neon-purple-glow: rgba(162, 155, 254, 0.4);
   
   --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
 }
@@ -26,33 +28,29 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--bg-dark), #1a0f2e);
-  animation: bgGradient 15s ease infinite;
-}
-
-@keyframes bgGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  background: radial-gradient(circle at 50% 50%, #20113c 0%, #060408 100%);
+  transition: background 0.5s ease;
 }
 
 /* Specific backgrounds for login and signup */
 .login-bg {
-  background: radial-gradient(circle at 20% 30%, rgba(90,20,150,0.2), transparent),
-              radial-gradient(circle at 80% 70%, rgba(231,76,60,0.1), transparent);
+  background: radial-gradient(circle at 20% 30%, rgba(162, 155, 254, 0.25), transparent),
+              radial-gradient(circle at 80% 70%, rgba(214, 48, 49, 0.12), transparent),
+              radial-gradient(circle at 50% 50%, #20113c 0%, #060408 100%);
 }
 
 .signup-bg {
-  background: radial-gradient(circle at 10% 20%, rgba(46,204,113,0.15), transparent),
-              radial-gradient(circle at 90% 80%, rgba(241,196,15,0.1), transparent);
+  background: radial-gradient(circle at 10% 20%, rgba(0, 184, 148, 0.2), transparent),
+              radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.12), transparent),
+              radial-gradient(circle at 50% 50%, #151d2e 0%, #060408 100%);
 }
 
 /* Lobby specific background */
 .lobby-bg {
-  background: radial-gradient(circle at 20% 30%, rgba(155,89,182,0.15), transparent),
-              radial-gradient(circle at 80% 70%, rgba(231,76,60,0.08), transparent);
+  background: radial-gradient(circle at 30% 30%, rgba(162, 155, 254, 0.22), transparent),
+              radial-gradient(circle at 85% 75%, rgba(255, 215, 0, 0.1), transparent),
+              radial-gradient(circle at 50% 50%, #180d30 0%, #060408 100%);
 }
-
 
 * {
   box-sizing: border-box;
@@ -68,8 +66,8 @@ body {
   overflow-x: hidden;
   line-height: 1.5;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(90, 20, 150, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(231, 76, 60, 0.08) 0%, transparent 40%);
+    radial-gradient(circle at 10% 20%, rgba(162, 155, 254, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(214, 48, 49, 0.06) 0%, transparent 45%);
 }
 
 #root {

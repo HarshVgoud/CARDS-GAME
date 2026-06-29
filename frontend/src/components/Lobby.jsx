@@ -47,11 +47,11 @@ const Lobby = ({ user, logout }) => {
           <img src={stats.avatar} alt="Avatar" style={{ width: '60px', height: '60px', borderRadius: '50%', border: '2px solid var(--gold-light)', objectFit: 'cover' }} />
         ) : (
           <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'linear-gradient(135deg, #f39c12 0%, #f1c40f 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 'bold', color: '#0b0914' }}>
-            {user.username.slice(0, 2).toUpperCase()}
+            {user?.username ? user.username.slice(0, 2).toUpperCase() : '??'}
           </div>
         )}
         <div style={{ textAlign: 'left' }}>
-          <h2 style={{ margin: 0, textAlign: 'left', lineHeight: '1.2' }}>Welcome, {user.username}!</h2>
+          <h2 style={{ margin: 0, textAlign: 'left', lineHeight: '1.2' }}>Welcome, {user?.username || 'Player'}!</h2>
           <div className="auth-subtitle" style={{ margin: 0, textAlign: 'left', fontSize: '0.85rem' }}>Access stats, spin rewards, or join a room</div>
         </div>
       </div>

@@ -321,44 +321,72 @@ class PokerGame {
       return winChances;
     }
 
-    const remainingDeck = [...this.deck];
-    const community = [...this.communityCards];
-    const cardsNeeded = 5 - community.length;
-    
-    const wins = {};
-    activePlayers.forEach(p => {
-      wins[p.id] = 0;
-    });
-
-    const trials = 200;
-    for (let t = 0; t < trials; t++) {
-      const tempDeck = [...remainingDeck];
-      // Partial shuffle to get the needed community cards
-      for (let i = tempDeck.length - 1; i > tempDeck.length - 1 - cardsNeeded; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [tempDeck[i], tempDeck[j]] = [tempDeck[j], tempDeck[i]];
+    const suits = ['h', 'd', 'c', 's'];
+    const values = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
+    const fullDeck = [];
+    for (let s of suits) {
+      for (let v of values) {
+        fullDeck.push(v + s);
       }
-
-      const trialCommunity = [...community];
-      for (let i = 0; i < cardsNeeded; i++) {
-        trialCommunity.push(tempDeck.pop());
-      }
-
-      const hands = activePlayers.map(p => ({
-        player: p,
-        solved: Hand.solve([...p.holeCards, ...trialCommunity])
-      }));
-
-      const winners = Hand.winners(hands.map(h => h.solved));
-      const winningPlayers = hands.filter(h => winners.includes(h.solved)).map(h => h.player);
-
-      winningPlayers.forEach(p => {
-        wins[p.id] += 1 / winningPlayers.length;
-      });
     }
 
+    const trials = 100;
+
     activePlayers.forEach(p => {
-      winChances[p.id] = Math.round((wins[p.id] / trials) * 100);
+      const knownCards = new Set([...p.holeCards, ...this.communityCards]);
+      const availableCards = fullDeck.filter(card => !knownCards.has(card));
+      const otherActivePlayers = activePlayers.filter(op => op.id !== p.id);
+      const cardsNeeded = 5 - this.communityCards.length;
+      
+      let playerWins = 0;
+
+      for (let t = 0; t < trials; t++) {
+        // Copy and shuffle availableCards using Fisher-Yates
+        const tempDeck = [...availableCards];
+        for (let i = tempDeck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [tempDeck[i], tempDeck[j]] = [tempDeck[j], tempDeck[i]];
+        }
+
+        // Deal 2 random hole cards to each of the other active players
+        const trialOpponentHoles = [];
+        for (let i = 0; i < otherActivePlayers.length; i++) {
+          trialOpponentHoles.push([tempDeck.pop(), tempDeck.pop()]);
+        }
+
+        // Deal remaining community cards to complete the 5 cards
+        const trialCommunity = [...this.communityCards];
+        for (let i = 0; i < cardsNeeded; i++) {
+          trialCommunity.push(tempDeck.pop());
+        }
+
+        // Solve all hands for comparison
+        const trialHands = [];
+        // The main player we are evaluating
+        trialHands.push({
+          playerId: p.id,
+          solved: Hand.solve([...p.holeCards, ...trialCommunity])
+        });
+        // The other active players with their simulated cards
+        otherActivePlayers.forEach((op, idx) => {
+          trialHands.push({
+            playerId: op.id,
+            solved: Hand.solve([...trialOpponentHoles[idx], ...trialCommunity])
+          });
+        });
+
+        // Determine winner(s)
+        const winners = Hand.winners(trialHands.map(h => h.solved));
+        const winningHands = trialHands.filter(h => winners.includes(h.solved));
+        
+        // If our main player is among the winners, increment the wins/splits count
+        const isWinner = winningHands.some(h => h.playerId === p.id);
+        if (isWinner) {
+          playerWins += 1 / winningHands.length;
+        }
+      }
+
+      winChances[p.id] = Math.round((playerWins / trials) * 100);
     });
 
     return winChances;

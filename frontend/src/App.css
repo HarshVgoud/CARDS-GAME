@@ -188,15 +188,15 @@
 .poker-table {
   width: 960px;
   height: 480px;
-  background: radial-gradient(circle, #0b5d0b 0%, #063c06 70%, #032603 100%); /* deep casino green */
-  border: 20px solid #b7950b; /* gold frame */
+  background: radial-gradient(circle, #2a114e 0%, #15062b 85%); /* deep purple velvet felt */
+  border: 18px solid #120b22; /* padded charcoal armrest */
   border-radius: 240px;
   position: relative;
   box-shadow: 
-    inset 0 0 80px rgba(0, 0, 0, 0.9),
-    0 25px 50px rgba(0, 0, 0, 0.8),
-    0 0 0 4px #1c130f, /* Outer shadow border */
-    0 0 30px rgba(39, 174, 96, 0.2);
+    inset 0 0 100px rgba(0, 0, 0, 0.95),
+    0 30px 60px rgba(0, 0, 0, 0.95),
+    0 0 0 3px #fdcb6e, /* Gold outer accent border */
+    0 0 45px rgba(162, 155, 254, 0.35); /* Soft neon violet felt underglow */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -210,7 +210,7 @@
   left: 12px;
   right: 12px;
   bottom: 12px;
-  border: 2px solid rgba(241, 196, 15, 0.15);
+  border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 220px;
   pointer-events: none;
 }
@@ -218,7 +218,7 @@
 /* Table logo/text watermark */
 .table-watermark {
   position: absolute;
-  color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.02);
   font-size: 4rem;
   font-weight: 900;
   letter-spacing: 10px;
@@ -231,16 +231,16 @@
 .pot-display {
   position: absolute;
   top: 30%;
-  background: rgba(5, 5, 10, 0.85);
-  padding: 8px 24px;
+  background: rgba(8, 6, 16, 0.9);
+  padding: 10px 28px;
   border-radius: 30px;
-  border: 1.5px solid var(--gold);
+  border: 1.5px solid var(--gold-light);
   color: var(--gold-light);
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   box-shadow: 
-    0 0 15px rgba(241, 196, 15, 0.25),
-    inset 0 0 10px rgba(0, 0, 0, 0.5);
+    0 0 20px rgba(255, 215, 0, 0.25),
+    inset 0 0 10px rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -250,7 +250,7 @@
 
 @keyframes pulsePot {
   0% { transform: scale(1); }
-  50% { transform: scale(1.03); box-shadow: 0 0 20px rgba(241, 196, 15, 0.4); }
+  50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(255, 215, 0, 0.45); }
   100% { transform: scale(1); }
 }
 
@@ -271,16 +271,16 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 6px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   user-select: none;
-  animation: cardDealAnim 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  animation: cardDealAnim 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  border: 1px solid rgba(255, 215, 0, 0.25); /* Gold outline border */
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s ease;
 }
 
 .poker-card:hover {
   transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 215, 0, 0.2);
   z-index: 20;
 }
 
@@ -305,17 +305,18 @@
 }
 
 .card-rank {
-  font-size: 1.2rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
 }
 
 .card-suit-mini {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin-top: 2px;
 }
 
 .card-center-suit {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   align-self: center;
   line-height: 1;
 }
@@ -333,12 +334,12 @@
   width: 68px;
   height: 98px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1.5px dashed rgba(255, 255, 255, 0.2);
+  border: 1.5px dashed rgba(255, 215, 0, 0.2);
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 215, 0, 0.15);
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -347,10 +348,10 @@
 .poker-card-back {
   width: 68px;
   height: 98px;
-  background: radial-gradient(circle at center, #9c1c1c 0%, #5c0c0c 100%);
-  border: 3px solid #ffffff;
+  background: radial-gradient(circle at center, #7d1c1c 0%, #3d0303 100%);
+  border: 2.5px solid #ffffff;
   border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -359,7 +360,7 @@
   content: '';
   position: absolute;
   top: 4px; left: 4px; right: 4px; bottom: 4px;
-  border: 1px solid rgba(253, 203, 110, 0.4);
+  border: 1px solid rgba(255, 215, 0, 0.4);
   border-radius: 4px;
 }
 
@@ -367,10 +368,10 @@
   content: '';
   position: absolute;
   top: 8px; left: 8px; right: 8px; bottom: 8px;
-  background-image: linear-gradient(45deg, rgba(253, 203, 110, 0.15) 25%, transparent 25%),
-                    linear-gradient(-45deg, rgba(253, 203, 110, 0.15) 25%, transparent 25%),
-                    linear-gradient(45deg, transparent 75%, rgba(253, 203, 110, 0.15) 75%),
-                    linear-gradient(-45deg, transparent 75%, rgba(253, 203, 110, 0.15) 75%);
+  background-image: linear-gradient(45deg, rgba(255, 215, 0, 0.15) 25%, transparent 25%),
+                    linear-gradient(-45deg, rgba(255, 215, 0, 0.15) 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, rgba(255, 215, 0, 0.15) 75%),
+                    linear-gradient(-45deg, transparent 75%, rgba(255, 215, 0, 0.15) 75%);
   background-size: 8px 8px;
   background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
 }
@@ -381,17 +382,17 @@
   transform: translate(-50%, -50%);
   width: 24px;
   height: 24px;
-  background: #f1c40f;
+  background: var(--gold-light);
   border-radius: 50%;
   border: 1.5px solid #fff;
   z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #5c0c0c;
-  font-size: 0.65rem;
+  color: #3d0303;
+  font-size: 0.75rem;
   font-weight: 900;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
 /* 8 Seats Geometry Layout */
@@ -652,7 +653,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   min-width: 110px;
 }
 
@@ -669,29 +670,29 @@
 }
 
 .btn-fold:hover:not(:disabled) {
-  background: #c0392b;
-  box-shadow: 0 0 15px rgba(192, 57, 43, 0.4);
+  background: #d63031;
+  box-shadow: 0 0 15px rgba(214, 48, 49, 0.4);
 }
 
 .btn-call {
-  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  background: linear-gradient(135deg, #00b894 0%, #00a8ff 100%);
   color: #ffffff;
-  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
 }
 
 .btn-call:hover:not(:disabled) {
-  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.5);
   transform: translateY(-2px);
 }
 
 .btn-raise {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  background: linear-gradient(135deg, #0984e3 0%, #6c5ce7 100%);
   color: #ffffff;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
 }
 
 .btn-raise:hover:not(:disabled) {
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.5);
   transform: translateY(-2px);
 }
 
@@ -703,7 +704,7 @@
 
 .btn-exit:hover:not(:disabled) {
   background: #bdc3c7;
-  color: #0b0914;
+  color: #07050a;
 }
 
 /* Raise Slider Styling */
